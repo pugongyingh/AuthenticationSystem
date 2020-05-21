@@ -1,0 +1,17 @@
+#header {
+    
+   
+    /* background-color: blue; */
+}
+
+ul#list {
+	min-width: 696px;
+	list-style: none;
+    padding-top: 20px;
+    
+    
+	}
+	ul#list li {
+        display: inline;
+        padding-left: 20px;
+	}
