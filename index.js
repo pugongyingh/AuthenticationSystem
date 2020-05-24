@@ -1,9 +1,10 @@
 // web framework, helps in structuring our code
 const express = require('express');
 
+// to read and write cookies
 const cookieParser = require('cookie-parser');
 
-// to run express funct
+// to initialize express
 //app has all the functionalities of the libraries
 const app= express(); 
 
@@ -21,10 +22,6 @@ const session = require('express-session');
 //for authentication
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
-// jwt for authentication in api's
-const passportJWT = require('./config/passport-jwt-strategy');
-// social authentication
-const passportGoogle = require('./config/passport-google-oauth2-strategy');
 
 //to store session info into the db
 const MongoStore = require('connect-mongo')(session);
@@ -35,15 +32,11 @@ const flash = require('connect-flash');
 // require the flash  middleware
 const customMware = require('./config/middleware');
 
-
 app.use(express.urlencoded());
-
 app.use(cookieParser());
 
 // to access static files
 app.use(express.static('./assets'));
-
-
 
 //we need to tell the server to use them
 app.use(expressLayouts);
@@ -92,12 +85,11 @@ app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
 
 // setup to use flash
-// we need to put if after session use coz it uses session cookies
 app.use(flash());
 // to use flash-middleware
 app.use(customMware.setFlash);
 
-//we need to tell the app to use the exported router
+//telling the app to use the exported router
 app.use('/', require('./routes'));
 
 //to make the app listen

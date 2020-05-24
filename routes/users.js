@@ -12,10 +12,15 @@ const usersController = require('../controllers/users_controller');
 console.log('router profile loaded');
 
 
-router.get('/profile/:id', passport.checkAuthentication,  usersController.profile);
+// router.get('/profile/:id', passport.checkAuthentication,  usersController.profile);
 // router.post('/update/:id', passport.checkAuthentication,  usersController.update);
 router.get('/sign-up', usersController.signUp);
 router.get('/sign-in', usersController.signIn);
+router.get('/re-password/:accessToken/:isValid', usersController.resetPassword);
+// router.get('/reset-after-login', usersController.createPasswordResetReq);
+router.post('/create-new-password', usersController.changePassword);
+
+
 router.post('/create', usersController.create);
 // use passport as a middleware to authenticate
 router.post('/create-session', passport.authenticate(
@@ -24,6 +29,8 @@ router.post('/create-session', passport.authenticate(
 ), usersController.createSession);
 
 router.get('/sign-out', usersController.destroySession);
+router.get('/reset', usersController.reset);
+router.use('/reset-password', usersController.createPasswordResetReq);
 
 // scope is the info which we are looking to fetch
 router.get('/auth/google', passport.authenticate('google', {scope: ['profile', 'email']}));

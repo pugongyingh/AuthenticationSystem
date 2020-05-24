@@ -1,13 +1,9 @@
-#header {
-    
-   
-    /* background-color: blue; */
-}
+
 
 ul#list {
 	min-width: 696px;
 	list-style: none;
-    padding-top: 20px;
+    padding-top: 10px;
     
     
 	}

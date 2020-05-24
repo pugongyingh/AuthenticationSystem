@@ -1,23 +1,10 @@
-
-<link rel="stylesheet" href="/css/user_profile.css">
-        
-<!-- Updating Profile -->
-<% if(user.id == profile_user.id) { %>
-        <!-- if user matches show the form else only profile info -->
-        <!-- enctype multipart for files -->
-        <!-- <form action="/users/update/<%= profile_user.id%>"enctype="multipart/form-data" method="POST">
-        <input type="text" name="name" placeholder="Your Name" value="<%= profile_user.name %>" required>
-        <input type="email" name="email" placeholder="Your Email" value="<%= profile_user.email %>" required>
-        <input type="file" name="avatar" placeholder="Profile Picture">
-        <input type="submit" value = "Update">
-        
-        
-        
-        </form>
+       
+<!-- <% if(locals.user) { %> 
+         <p> <%= user.name %> </p>
+        <p> <%= user.email %> </p>
+               
+<%} %> -->
 
 
-
-        <% } else { %> -->
                 <p> <%= profile_user.name %> </p>
                 <p> <%= profile_user.email %> </p>
-<!-- <% } %> -->
