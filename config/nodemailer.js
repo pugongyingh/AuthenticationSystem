@@ -4,7 +4,7 @@ const path = require('path');
 
 
 // transporter defines the configuaration using which we send emails
-let transporter = nodemailer.createTransport({
+module.exports.transporter = nodemailer.createTransport({
     service: 'gmail',
     host: 'smtp.gmail.com',
     // 587(tls, which is the highest form of security)
@@ -13,31 +13,9 @@ let transporter = nodemailer.createTransport({
      // authentication using which we send emails
     auth: {
         user: 'mounikagonae',
-        pass: ''
+        pass: '{123456789}'
     },
     tls: {
         rejectUnauthorized: false
     }
 });
-
- // define we will be using ejs
- // relativePath from where the mail is being sent
- let renderTemplate = (data, relativePath) => {
-     let mailHTML;
-     ejs.renderFile(
-        path.join(__dirname, '../views/mailers', relativePath),
-        data,
-        function(err, template) {
-            if(err) {console.log('error in rendering template', err); return; }
-
-            mailHTML = template;
-        }
-     )
-
-       return mailHTML;
- }
-
-  module.exports = {
-      transporter: transporter,
-      renderTemplate: renderTemplate
-  }

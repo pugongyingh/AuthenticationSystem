@@ -1,4 +1,10 @@
 <link rel="stylesheet" href="/css/sign_in.css">
+
+<div id="user-name">
+<% if(locals.user){ %>
+  Welcome <h2><%= user.name %></h2>
+</div>
+<% } else {%> 
 <div class = "container">
  <div class = "input-form">
    
@@ -22,3 +28,4 @@
 <a href="/users/reset"> Forgot Password?</a>
 <small> Click Here </small>
 </div>
+<% } %>

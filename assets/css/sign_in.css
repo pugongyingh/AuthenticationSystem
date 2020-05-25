@@ -7,6 +7,11 @@ body {
     height: 20vh;
 }
 
+#user-name {
+font-family: sans-serif;
+color: rgb(76, 57, 94)
+
+}
 .container {
     width: 300px;
     margin: 0 auto;

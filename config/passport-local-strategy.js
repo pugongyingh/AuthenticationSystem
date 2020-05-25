@@ -6,24 +6,21 @@ const LocalStrategy = require('passport-local').Strategy;
 //import the user
 const User = require('../models/user');
 
-//we need to tell the passport to use the local strategy we created
+//tell the passport to use the local strategy we created
 //authentication using passport
 passport.use(new LocalStrategy({
     usernameField: 'email',
     // for passing req data to res local for flash msg
     passReqToCallback: true
 },
-    //done is inbuilt in passport
+    // done is inbuilt in passport
     //done is callback func retuning to pjs
     function(req, email, password, done) {
     // find a user and establish the identity
-    //first email is schema email
-    //second is passed in the func above
     User.findOne({email: email}, function(err, user) {
         if (err) { 
             req.flash('error', err);
             console.log('error in finding the user --> Passport');
-            //done can two args, first is err
             return done(err); 
         }
             if(!user || !user.validPassword(password)) {
@@ -77,11 +74,10 @@ passport.checkAuthentication = function(req,res,next) {
 //  after the user is signed in
 passport.setAuthenticatedUser = function(req,res,next) {
     if(req.isAuthenticated()){
-
-//req.user contains the current signed in user from the session cookie & we are just sending this to the locals for the views
-        res.locals.user = req.user;
+ //req.user contains the current signed in user from the session cookie & we are just sending this to the locals for the views
+    res.locals.user = req.user;
     }
-    next();
+  next();
 }
 
 module.exports = passport;
