@@ -13,7 +13,7 @@ module.exports.transporter = nodemailer.createTransport({
      // authentication using which we send emails
     auth: {
         user: 'mounikagonae',
-        pass: '{123456789}'
+        pass: ''
     },
     tls: {
         rejectUnauthorized: false
